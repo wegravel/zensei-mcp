@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.wegravel/zensei-mcp",
+  "title": "Zensei Index",
+  "description": "Today's Zensei Index: a 0-100 US market risk score, its ten indicators and the latest summary.",
+  "version": "1.0.0",
+  "websiteUrl": "https://www.zensei.com/mcp",
+  "repository": {
+    "url": "https://github.com/wegravel/zensei-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://www.zensei.com/mcp"
+    }
+  ]
+}
