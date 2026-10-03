@@ -1,0 +1,13 @@
+{
+  "name": "zensei",
+  "version": "1.0.0",
+  "description": "Today's Zensei Index: a 0-100 US stock market risk score (lower is healthier), its ten indicators, and the latest market summary. Read-only, no account needed.",
+  "author": {
+    "name": "Zensei",
+    "url": "https://www.zensei.com"
+  },
+  "homepage": "https://www.zensei.com/mcp",
+  "repository": "https://github.com/wegravel/zensei-mcp",
+  "license": "MIT",
+  "keywords": ["zensei", "zensei index", "zensei market risk", "mcp"]
+}

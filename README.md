@@ -67,6 +67,10 @@ Add this to `.vscode/mcp.json`:
 }
 ```
 
+### Grok Build and Claude Code plugins
+
+This repository is also a plugin. `.mcp.json` declares the server. `.grok-plugin/plugin.json` and `.claude-plugin/plugin.json` hold the manifest.
+
 ### Any other client
 
 Point the client at `https://www.zensei.com/mcp` with the Streamable HTTP transport.

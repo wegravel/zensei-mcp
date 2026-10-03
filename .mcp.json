@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "zensei": {
+      "type": "http",
+      "url": "https://www.zensei.com/mcp"
+    }
+  }
+}
