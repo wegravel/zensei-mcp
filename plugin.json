@@ -1,0 +1,99 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "zensei",
+  "version": "2.0.0",
+  "description": "The Zensei Index, a 0-100 US stock market risk score, and a sector rotation scan of US sector ETFs against the S&P 500.",
+  "author": {
+    "name": "Zensei",
+    "url": "https://www.zensei.com"
+  },
+  "homepage": "https://www.zensei.com/mcp",
+  "repository": "https://github.com/wegravel/zensei-mcp",
+  "license": "MIT",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Zensei",
+        "shortDescription": "US market regime and sectors",
+        "longDescription": "Zensei tells you what market regime US stocks are in, and which sectors lead or lag the S&P 500.\n\nThe Zensei Index is a 0-100 risk score for the US stock market. Lower is healthier. Ten indicators feed it, in three layers: structural conditions (valuation, credit, real rates, Fed liquidity, risk appetite), tactical filters (volatility term structure, intraday dislocation) and regime confirmations (volatility, price trend, cross-asset stress). Ask for today's score and Zensei shows the regime card: the score, the regime label, the three layer scores and the latest written market summary. Expand it to see each indicator with its chart.\n\nThe sector scan compares every US sector ETF with the S&P 500: relative strength, momentum, quadrant and returns from one week to one year. Zensei draws it as a rotation map. Open a sector to see its holdings, the stocks that lead it and the ones that quietly outperform. Ask about one stock to see how it does inside its sectors.\n\nPublic data works without an account. Sign in with your Zensei account to see the data your plan includes and your Zensei watchlist.\n\nZensei explains market conditions. It does not give investment advice, predict prices or place trades.",
+        "developerName": "WeGravel, Inc.",
+        "category": "Finance",
+        "capabilities": [
+          "Market regime score",
+          "Indicator charts",
+          "Sector rotation map",
+          "Sector holdings",
+          "Stock detail"
+        ],
+        "websiteURL": "https://www.zensei.com/mcp",
+        "supportURL": "https://www.zensei.com/contact",
+        "privacyPolicyURL": "https://www.zensei.com/privacy",
+        "termsOfServiceURL": "https://www.zensei.com/terms",
+        "defaultPrompt": [
+          "What market regime are US stocks in today?",
+          "Which sectors are leading the S&P 500 right now?",
+          "Show me the Zensei Index over the last 90 days."
+        ],
+        "brandColor": "#d8ff85",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Today's market regime",
+              "prompt": "What market regime are US stocks in today, according to Zensei?",
+              "tools_triggered": "zensei_index_today",
+              "expected_behavior": "Shows the Zensei regime card with today's 0-100 score, the regime label and the three layer scores, and explains that a lower score is healthier."
+            },
+            {
+              "description": "Leading and lagging sectors",
+              "prompt": "Which US sectors are leading and lagging the S&P 500 right now?",
+              "tools_triggered": "zensei_sectors_scan",
+              "expected_behavior": "Shows the sector rotation map and names the sectors that lead and lag the S&P 500, with their one-month return against the index."
+            },
+            {
+              "description": "Index history",
+              "prompt": "Show me how the Zensei Index moved over the last 90 days.",
+              "tools_triggered": "zensei_index_history",
+              "expected_behavior": "Returns daily Zensei Index scores with their regime for the last 90 days and summarizes the trend and any regime changes."
+            },
+            {
+              "description": "Inside one sector",
+              "prompt": "What's inside the uranium sector ETF URA, and which holdings lead it?",
+              "tools_triggered": "zensei_sector_detail",
+              "expected_behavior": "With the signed-in test account, returns URA's holdings with weights and relative strength and names the holdings that lead the sector."
+            },
+            {
+              "description": "One stock against its sectors",
+              "prompt": "How is NVDA doing relative to its sector?",
+              "tools_triggered": "zensei_stock_detail",
+              "expected_behavior": "Returns NVDA's relative strength and returns against its sector ETF and the S&P 500, and lists the sectors that hold it."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Placing a trade",
+              "prompt": "Buy 10 shares of NVDA for me."
+            },
+            {
+              "description": "Personal investment advice",
+              "prompt": "Should I sell all my stocks this week?"
+            },
+            {
+              "description": "Unrelated request",
+              "prompt": "What's the weather in Paris tomorrow?"
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Zensei shows market data. It does not sell products or process payments in ChatGPT."
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "First ChatGPT release: the Zensei Index with its indicators and charts, the sector rotation scan, sector holdings, stock detail and the signed-in watchlist."
+      }
+    }
+  }
+}
